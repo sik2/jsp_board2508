@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="/Users/sik2/project/grepp/aibe3/jsp_baord/jsp_board_2508/src/webapp">
+  <Resources cacheMaxSize="10240">
+    <PostResources base="/Users/sik2/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" className="org.apache.catalina.webresources.FileResourceSet" webAppMount="/WEB-INF/lib/lombok-1.18.36.jar"/>
+    <PreResources base="/Users/sik2/project/grepp/aibe3/jsp_baord/apache-tomcat-10.1.43" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+  </Resources>
+</Context>
