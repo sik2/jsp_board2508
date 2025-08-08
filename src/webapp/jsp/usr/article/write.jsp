@@ -31,7 +31,7 @@
 <div>
     <h2>게시물 작성</h2>
 
-    <form onsubmit="articleSaveSubmitForm(this); return false;">
+    <form method="POST" onsubmit="articleSaveSubmitForm(this); return false;">
         <div>
             <label for="title">제목</label>
             <input type="text"
