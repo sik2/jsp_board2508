@@ -1,5 +1,6 @@
 package com.ll.jsp.board.boundedContext.global.base;
 
+import com.ll.jsp.board.boundedContext.article.dto.Article;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class Rq {
     private final HttpServletRequest req;
@@ -70,5 +72,13 @@ public class Rq {
        } catch (IOException e) {
            throw new RuntimeException("뷰로의 포워딩 중 IO 오류가 발생했습니다.", e);
        }
+    }
+
+    public void getAttr(String name) {
+        req.getAttribute(name);
+    }
+
+    public void setAttr(String name, Object value) {
+        req.setAttribute(name, value);
     }
 }
