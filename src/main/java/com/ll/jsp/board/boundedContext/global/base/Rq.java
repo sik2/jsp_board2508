@@ -1,4 +1,4 @@
-package com.ll.jsp.board;
+package com.ll.jsp.board.boundedContext.global.base;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -49,7 +49,7 @@ public class Rq {
         return value;
     }
 
-    public void writer(String str) {
+    public void appendBody(String str) {
         try {
             resp.getWriter().append(str);
         } catch (IOException e) {
