@@ -12,7 +12,8 @@
 
 <div>
     <ul>
-    <% for (Article article : articleList) { %>
+    <% for (int i = articleList.size() - 1; i >= 0; i--) { %>
+        <% Article article = articleList.get(i);  %>
         <li><%= article.getId() %>번 : <%= article.getTitle() %></li>
     <% } %>
     </ul>
