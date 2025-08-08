@@ -5,7 +5,7 @@ import com.ll.jsp.board.boundedContext.global.base.Rq;
 
 public class ArticleController {
     public void showList(Rq rq) {
-        rq.appendBody("게시글 목록입니다.");
+        rq.view("usr/article/list");
     }
 
 }
