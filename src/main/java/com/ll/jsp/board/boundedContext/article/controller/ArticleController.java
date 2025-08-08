@@ -4,8 +4,8 @@ package com.ll.jsp.board.boundedContext.article.controller;
 import com.ll.jsp.board.boundedContext.article.dto.Article;
 import com.ll.jsp.board.boundedContext.global.base.Rq;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 public class ArticleController {
@@ -24,6 +24,12 @@ public class ArticleController {
     }
 
     public void showList(Rq rq) {
+//        List<Article> articleList = this.articleList;
+//        Collections.reverse(articleList);
+        List<Article> articleList = this.articleList.stream()
+                .sorted(Comparator.comparing(Article::getId).reversed()) // 정렬 기준 예시
+                .toList();
+
         rq.setAttr("articleList", articleList);
 
         rq.view("usr/article/list");
