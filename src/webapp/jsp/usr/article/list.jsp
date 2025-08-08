@@ -4,17 +4,18 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 
-<%
-    List<Article> articleList = (List<Article>) request.getAttribute("articleList");
-%>
+
 
 <h1>게시물 리스트</h1>
 
 <div>
     <ul>
-    <% for (int i = articleList.size() - 1; i >= 0; i--) { %>
-        <% Article article = articleList.get(i);  %>
-        <li><%= article.getId() %>번 : <%= article.getTitle() %></li>
-    <% } %>
+        <%
+        List<Article> articleList = (List<Article>) request.getAttribute("articleList");
+        for (int i = articleList.size() - 1; i >= 0; i--) {
+        pageContext.setAttribute("article", articleList.get(i));
+        %>
+        <li>${article.id}번 : ${article.title}</li>
+        <% } %>
     </ul>
 </div>
