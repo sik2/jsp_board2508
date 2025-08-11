@@ -91,4 +91,22 @@ public class ArticleController {
         rq.setAttr("article", article);
         rq.view("usr/article/detail");
     }
+
+    public void showModify(Rq rq) {
+        long id = rq.getLongPathValueByIndex(1, 0);
+
+        if (id <= 0) {
+            rq.appendBody("""
+                    <script>
+                        alert('올바른 요청이 아닙니다.');
+                        history.back();
+                    </script>
+                    """);
+            return;
+        }
+
+        // TODO: 데이터 불러오기
+
+        rq.view("usr/article/modify");
+    }
 }
