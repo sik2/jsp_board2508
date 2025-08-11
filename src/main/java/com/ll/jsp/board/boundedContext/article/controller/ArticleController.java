@@ -105,8 +105,20 @@ public class ArticleController {
             return;
         }
 
-        // TODO: 데이터 불러오기
+        Article article  = articleService.findById(id);
 
+
+        if (article == null) {
+            rq.appendBody("""
+                    <script>
+                        alert("%d번 게시물이 존재하지 않습니다.");
+                        history.back();
+                    </script>
+                    """.formatted(id));
+            return;
+        }
+
+        rq.setAttr("article", article);
         rq.view("usr/article/modify");
     }
 }

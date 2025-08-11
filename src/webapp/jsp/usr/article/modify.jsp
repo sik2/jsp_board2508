@@ -32,6 +32,10 @@
 <div>
     <h2>게시물 수정</h2>
 
+    <div>
+        <span>번호 : ${article.id}</span>
+    </div>
+
     <form method="POST" onsubmit="articleSaveSubmitForm(this); return false;">
         <div>
             <label for="title">제목</label>
@@ -39,6 +43,7 @@
                    id="title"
                    name="title"
                    placeholder="제목을 입력해주세요"
+                   value="${article.title}"
                    required>
         </div>
 
@@ -47,7 +52,7 @@
             <textarea id="content"
                       name="content"
                       placeholder="내용을 입력해주세요"
-                      required></textarea>
+                      required>${article.content}</textarea>
         </div>
 
         <div>
