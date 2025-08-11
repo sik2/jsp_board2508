@@ -62,4 +62,13 @@ public class ArticleController {
                 <a href="/usr/article/list">목록으로</a>
                 """.formatted(id, title, content));
     }
+
+    public void showDetail(Rq rq) {
+        int id = rq.getIntParam("id", 0);
+
+        Article article = articleService.findById(id);
+
+        rq.setAttr("article", article);
+        rq.view("usr/article/detail");
+    }
 }
