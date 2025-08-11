@@ -39,7 +39,7 @@ public class ArticleRepository {
         return id;
     }
 
-    public Article findById(int id) {
+    public Article findById(long id) {
         return articleList.stream()
                 .filter(article -> article.getId() == id)
                 .findFirst()
