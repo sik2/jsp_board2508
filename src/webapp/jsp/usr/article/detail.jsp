@@ -23,4 +23,6 @@
     <div>
         <a href="/usr/article/modify/${article.id}">수정</a>
     </div>
+
+    <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false; " href="/usr/article/delete/${article.id}">삭제</a>
 </div>
