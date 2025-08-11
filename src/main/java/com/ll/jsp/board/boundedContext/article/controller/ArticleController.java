@@ -66,7 +66,28 @@ public class ArticleController {
     public void showDetail(Rq rq) {
         int id = rq.getIntParam("id", 0);
 
+        if (id <= 0) {
+            rq.appendBody("""
+                    <script>
+                        alert('올바른 요청이 아닙니다.');
+                        history.back();
+                    </script>
+                    """);
+            return;
+        }
+
         Article article = articleService.findById(id);
+
+        if (article == null) {
+            rq.appendBody("""
+                    <script>
+                        alert("%d번 게시물이 존재하지 않습니다.");
+                        history.back();
+                    </script>
+                    """.formatted(id));
+            return;
+        }
+
 
         rq.setAttr("article", article);
         rq.view("usr/article/detail");
