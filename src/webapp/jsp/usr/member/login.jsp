@@ -6,7 +6,7 @@
 <!-- 컨텐츠 영역 -->
     <div class="container">
         <h2>로그인</h2>
-        <form method="POST" action="#">
+        <form method="POST" action="/usr/member/login">
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" id="username" name="username" placeholder="아이디를 입력해주세요" required>

@@ -4,6 +4,7 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -11,11 +12,12 @@ import java.io.UnsupportedEncodingException;
 public class Rq {
     private final HttpServletRequest req;
     private final HttpServletResponse resp;
+    private final HttpSession session;
 
     public Rq(HttpServletRequest req, HttpServletResponse resp) {
         this.req = req;
         this.resp = resp;
-
+        this.session = req.getSession();
 
         try {
             req.setCharacterEncoding("UTF-8");
@@ -139,5 +141,9 @@ public class Rq {
                     history.back();
                 </script>
                 """.formatted(msg));
+    }
+
+    public void setSessionAttr(String attrName, Object value) {
+        session.setAttribute(attrName, value);
     }
 }
