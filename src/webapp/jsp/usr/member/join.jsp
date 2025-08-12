@@ -7,7 +7,7 @@
 
 <div class="container">
     <h2>회원 가입</h2>
-    <form method="POST" action="#">
+    <form method="POST" action="/usr/member/join">
         <div class="form-group">
             <label for="username">아이디</label>
             <input type="text" id="username" name="username" placeholder="아이디를 입력해주세요" required>
@@ -21,7 +21,7 @@
             <input type="text" id="name" name="name" placeholder="이름을 입력해주세요" required>
         </div>
 
-        <button>회원가입</button>
+        <button type="submit">회원가입</button>
    </form>
 </div>
 

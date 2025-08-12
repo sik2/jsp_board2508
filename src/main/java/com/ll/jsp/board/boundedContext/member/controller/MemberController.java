@@ -16,4 +16,14 @@ public class MemberController {
     public void showJoin(Rq rq) {
         rq.view("usr/member/join");
     }
+
+    public void doJoin(Rq rq) {
+        String username = rq.getParam("username", "");
+        String password = rq.getParam("password", "");
+        String name = rq.getParam("name", "");
+
+        memberService.join(username, password, name);
+
+        rq.replace("%s 님 회원가입이 완료 되었습니다.".formatted(username), "/");
+    }
 }

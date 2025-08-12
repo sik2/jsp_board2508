@@ -9,4 +9,8 @@ public class MemberService {
     public MemberService() {
         this.memberRepository = Container.memberRepository;
     }
+
+    public void join(String username, String password, String name) {
+        memberRepository.save(username, password, name);
+    }
 }
