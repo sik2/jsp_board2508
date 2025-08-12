@@ -87,4 +87,10 @@ public class MemberController {
 
         rq.replace("%s 님 로그인 되었습니다. 반갑습니다.".formatted(username), "/" );
     }
+
+    public void doLogout(Rq rq) {
+        rq.removeSessionAttr("loggedInMember");
+
+        rq.replace("로그아웃 되었습니다.", "/");
+    }
 }

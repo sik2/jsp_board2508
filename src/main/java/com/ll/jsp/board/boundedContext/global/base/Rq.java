@@ -146,4 +146,8 @@ public class Rq {
     public void setSessionAttr(String attrName, Object value) {
         session.setAttribute(attrName, value);
     }
+
+    public void removeSessionAttr(String attrName) {
+        session.removeAttribute(attrName);
+    }
 }
