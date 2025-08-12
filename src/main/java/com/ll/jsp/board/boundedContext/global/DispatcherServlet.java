@@ -22,7 +22,7 @@ public class DispatcherServlet extends HttpServlet {
         ArticleController articleController = Container.articleController;
 
         switch (rq.getMethod()) {
-            case "GET":
+            case "GET" -> {
                 switch (rq.getActionPath()) {
                     case "/usr/article/write" -> articleController.showWrite(rq);
                     case "/usr/article/list" -> articleController.showList(rq);
@@ -31,8 +31,8 @@ public class DispatcherServlet extends HttpServlet {
                     case "/usr/member/join" -> memberController.showJoin(rq);
                     case "/usr/member/login" -> memberController.showLogin(rq);
                 }
-                break;
-            case "POST":
+            }
+            case "POST" -> {
                 switch (rq.getActionPath()) {
                     case "/usr/article/write" -> articleController.doWrite(rq);
                     case "/usr/article/modify" -> articleController.doModify(rq);
@@ -41,7 +41,7 @@ public class DispatcherServlet extends HttpServlet {
                     case "/usr/member/login" -> memberController.doLogin(rq);
                     case "/usr/member/logout" -> memberController.doLogout(rq);
                 }
-                break;
+            }
         }
     }
 
