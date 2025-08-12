@@ -29,6 +29,7 @@ public class DispatcherServlet extends HttpServlet {
                     case "/usr/article/detail" -> articleController.showDetail(rq);
                     case "/usr/article/modify" -> articleController.showModify(rq);
                     case "/usr/member/join" -> memberController.showJoin(rq);
+                    case "/usr/member/login" -> memberController.showLogin(rq);
                 }
             case "POST":
                 switch (rq.getActionPath()) {
