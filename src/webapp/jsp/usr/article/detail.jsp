@@ -28,9 +28,10 @@
 
     <form
             id ="deleteForm"
-            action="/usr/article/delete/${article.id}"
+            action="/usr/article/delete"
             method="POST"
     >
+        <input type="hidden" name="deleteId" value="${article.id}" readonly>
     </form>
 </div>
 

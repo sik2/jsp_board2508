@@ -113,7 +113,9 @@ public class ArticleController {
     }
 
     public void doDelete(Rq rq) {
-        long id = rq.getLongPathValueByIndex(1, 0);
+        int id = rq.getIntParam("deleteId", 0);
+
+//        long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id <= 0) {
             rq.historyBack("올바른 요청이 아닙니다.");
