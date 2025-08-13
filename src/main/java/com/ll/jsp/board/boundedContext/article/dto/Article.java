@@ -16,10 +16,12 @@ public class Article {
     private long id;
     private String title;
     private String content;
+    private String regDate;
 
     public Article(Map<String, Object> row) {
         this.id = ((BigInteger) row.get("id")).longValue();
         this.title = (String) row.get("title");
         this.content = (String) row.get("content");
+        this.regDate = row.get("regDate").toString();
     }
 }
