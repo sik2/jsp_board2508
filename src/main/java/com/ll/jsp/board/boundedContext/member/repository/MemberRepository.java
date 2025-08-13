@@ -35,6 +35,8 @@ public class MemberRepository {
     public Member findByUsername(String username) {
         Map<String, Object> row = dbConnection.selectRow("select * from `member` where username = '%s' ".formatted(username));
 
+        if (row.size() ==  0) return null;
+
         return new Member(row);
     }
 }
