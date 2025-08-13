@@ -24,13 +24,13 @@ public class DBConnection {
     private Connection connection;
 
     /** 데이터베이스 이름 */
-    public static String DB_NAME = "";
+    public static String DB_NAME = "board_proj";
 
     /** DB 접속 사용자명 */
-    public static String DB_USER = "";
+    public static String DB_USER = "root";
 
     /** DB 접속 비밀번호 */
-    public static String DB_PASSWORD = "";
+    public static String DB_PASSWORD = "1234";
 
     /** DB 접속 포트번호 (MySQL 기본 포트) */
     public static int DB_PORT = 3306;
@@ -58,7 +58,6 @@ public class DBConnection {
             // 2. 데이터베이스에 실제 연결 수립
             connection = DriverManager.getConnection(url, user, password);
             System.out.println("연결성공");
-
         } catch (SQLException e) {
             // SQL 관련 예외 (연결 실패, 잘못된 계정 정보 등)
             System.err.printf("[SQL 예외] : %s\n", e.getMessage());
