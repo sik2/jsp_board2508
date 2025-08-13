@@ -1,12 +1,13 @@
 package com.ll.jsp.board.boundedContext.article.controller;
 
 
+import com.ll.jsp.board.boundedContext.article.dto.ArticleDto;
 import com.ll.jsp.board.boundedContext.article.entity.Article;
 import com.ll.jsp.board.boundedContext.article.service.ArticleService;
 import com.ll.jsp.board.boundedContext.base.Container;
 import com.ll.jsp.board.boundedContext.global.base.Rq;
 
-import java.util.*;
+import java.util.List;
 
 public class ArticleController {
 
@@ -17,13 +18,13 @@ public class ArticleController {
     }
 
     public void showList(Rq rq) {
-        List<Article> articleList = articleService.findAll();
+        List<ArticleDto> articleDtoList = articleService.joinMemberFindAll();
 
-       if (articleList.isEmpty()) {
+       if (articleDtoList.isEmpty()) {
            rq.replace("게시물이 존재하지 않습니다.", "/");
        }
 
-        rq.setAttr("articleList", articleList);
+        rq.setAttr("articleDtoList", articleDtoList);
         rq.view("usr/article/list");
     }
 

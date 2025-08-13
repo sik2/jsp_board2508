@@ -12,14 +12,18 @@
             <tr>
                 <th>번호</th>
                 <th>제목</th>
+                <th>작성자</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="article" items="${articleList}" varStatus="status">
+            <c:forEach var="articleDto" items="${articleDtoList}" varStatus="status">
                 <tr>
-                    <td>${article.id}</td>
+                    <td>${articleDto.id}</td>
                     <td>
-                        <a href="/usr/article/detail/${article.id}">${article.title}</a>
+                        <a href="/usr/article/detail/${articleDto.id}">${articleDto.title}</a>
+                    </td>
+                    <td>
+                        ${articleDto.author}
                     </td>
                 </tr>
             </c:forEach>

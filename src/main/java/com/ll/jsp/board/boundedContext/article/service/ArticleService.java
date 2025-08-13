@@ -1,5 +1,6 @@
 package com.ll.jsp.board.boundedContext.article.service;
 
+import com.ll.jsp.board.boundedContext.article.dto.ArticleDto;
 import com.ll.jsp.board.boundedContext.article.entity.Article;
 import com.ll.jsp.board.boundedContext.article.repository.ArticleRepository;
 import com.ll.jsp.board.boundedContext.base.Container;
@@ -15,6 +16,10 @@ public class ArticleService {
 
     public List<Article> findAll() {
         return articleRepository.findAll();
+    }
+
+    public List<ArticleDto> joinMemberFindAll() {
+        return articleRepository.joinMemberFindAll();
     }
 
     public long write(String title, String content) {

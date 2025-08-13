@@ -1,5 +1,6 @@
 package com.ll.jsp.board.boundedContext.article.repository;
 
+import com.ll.jsp.board.boundedContext.article.dto.ArticleDto;
 import com.ll.jsp.board.boundedContext.article.entity.Article;
 import com.ll.jsp.board.boundedContext.base.Container;
 import com.ll.jsp.board.db.DBConnection;
@@ -28,6 +29,23 @@ public class ArticleRepository {
         }
 
         return articleList;
+    }
+
+    public List<ArticleDto> joinMemberFindAll() {
+        List<ArticleDto> articleDtoList = new ArrayList<>();
+        List<Map<String, Object>> rows =  dbConnection.selectRows("""
+                SELECT A.id, A.title, A.content, M.username, A.regDate 
+                FROM `article` as A
+                INNER JOIN `member` AS M
+                ON A.member_id = M.id
+                """);
+
+        for (Map<String, Object> row : rows) {
+            ArticleDto articleDto =  new ArticleDto(row);
+            articleDtoList.add(articleDto);
+        }
+
+        return articleDtoList;
     }
 
     public long save(String title, String content) {
