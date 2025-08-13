@@ -1,6 +1,6 @@
 package com.ll.jsp.board.boundedContext.article.repository;
 
-import com.ll.jsp.board.boundedContext.article.dto.Article;
+import com.ll.jsp.board.boundedContext.article.entity.Article;
 import com.ll.jsp.board.boundedContext.base.Container;
 import com.ll.jsp.board.db.DBConnection;
 

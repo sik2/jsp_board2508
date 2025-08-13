@@ -1,7 +1,7 @@
 package com.ll.jsp.board.boundedContext.article.controller;
 
 
-import com.ll.jsp.board.boundedContext.article.dto.Article;
+import com.ll.jsp.board.boundedContext.article.entity.Article;
 import com.ll.jsp.board.boundedContext.article.service.ArticleService;
 import com.ll.jsp.board.boundedContext.base.Container;
 import com.ll.jsp.board.boundedContext.global.base.Rq;
