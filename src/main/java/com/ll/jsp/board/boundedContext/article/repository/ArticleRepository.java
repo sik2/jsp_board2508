@@ -60,11 +60,17 @@ public class ArticleRepository {
         return id;
     }
 
-    public Article findById(long id) {
+    public ArticleDto joinMemberFindById(long id) {
         // v1 DB 단건 조회
-        Map<String, Object> row = dbConnection.selectRow("select * from article where id = %d".formatted(id));
+        Map<String, Object> row = dbConnection.selectRow("""
+                SELECT A.id, A.title, A.content, M.username, A.regDate 
+                FROM `article` as A
+                INNER JOIN `member` AS M
+                ON A.member_id = M.id
+                WHERE A.id = %d
+                """.formatted(id));
 
-        return new Article(row);
+        return new ArticleDto(row);
 
 //        v2 - 전체 조회 후 리스트 탐색
 //        List<Article> articleList = findAll();
@@ -73,6 +79,13 @@ public class ArticleRepository {
 //                .filter(article -> article.getId() == id)
 //                .findFirst()
 //                .orElse(null);
+    }
+
+    public Article findById(long id) {
+        // v1 DB 단건 조회
+        Map<String, Object> row = dbConnection.selectRow("select * from article where id = %d".formatted(id));
+
+        return new Article(row);
     }
 
     public void modify(long id, String title, String content) {

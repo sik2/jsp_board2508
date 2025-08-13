@@ -60,14 +60,14 @@ public class ArticleController {
             return;
         }
 
-        Article article = articleService.findById(id);
+        ArticleDto articleDto = articleService.joinMemberFindById(id);
 
-        if (article == null) {
+        if (articleDto == null) {
             rq.replace("%d번 게시물이 존재하지 않습니다.".formatted(id), "/usr/article/list");
             return;
         }
 
-        rq.setAttr("article", article);
+        rq.setAttr("articleDto", articleDto);
         rq.view("usr/article/detail");
     }
 
