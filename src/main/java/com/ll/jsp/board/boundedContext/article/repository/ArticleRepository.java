@@ -13,11 +13,12 @@ public class ArticleRepository {
     DBConnection dbConnection;
 
     public ArticleRepository() {
-        articleList = new ArrayList<>();
         dbConnection = Container.dbconnection;
     }
 
     public List<Article> findAll() {
+        articleList = new ArrayList<>();
+
         List<Map<String, Object>> rows = dbConnection.selectRows("select * from article");
         System.out.println(rows);
 
@@ -31,16 +32,29 @@ public class ArticleRepository {
     }
 
     public long save(String title, String content) {
-        int id = dbConnection.insert("INSERT INTO article SET title='%s', content='%s'".formatted(title, content));
+        int id = dbConnection.insert(""" 
+                            INSERT INTO article 
+                            SET 
+                            title='%s', 
+                            content='%s'
+                        """.formatted(title, content));
 
         return id;
     }
 
     public Article findById(long id) {
-        return articleList.stream()
-                .filter(article -> article.getId() == id)
-                .findFirst()
-                .orElse(null);
+        // v1 DB 단건 조회
+        Map<String, Object> row = dbConnection.selectRow("select * from article where id = %d".formatted(id));
+
+        return new Article(row);
+
+//        v2 - 전체 조회 후 리스트 탐색
+//        List<Article> articleList = findAll();
+//
+//        return articleList.stream()
+//                .filter(article -> article.getId() == id)
+//                .findFirst()
+//                .orElse(null);
     }
 
     public void modify(long id, String title, String content) {
