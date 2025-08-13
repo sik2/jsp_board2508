@@ -20,7 +20,6 @@ public class ArticleRepository {
         articleList = new ArrayList<>();
 
         List<Map<String, Object>> rows = dbConnection.selectRows("select * from article");
-        System.out.println(rows);
 
         for (Map<String, Object> row : rows) {
            Article article  = new Article(row);
@@ -58,19 +57,15 @@ public class ArticleRepository {
     }
 
     public void modify(long id, String title, String content) {
-        Article article = findById(id);
-
-        if (article == null) return;
-
-        article.setTitle(title);
-        article.setContent(content);
+        dbConnection.update("""
+                    UPDATE article
+                    SET title = '%s',
+                    content = '%s'
+                    WHERE id = %d
+                """.formatted(title, content, id));
     }
 
     public void delete(long id) {
-        Article article = findById(id);
-
-        if (article == null) return;
-
-        articleList.remove(article);
+        dbConnection.delete("DELETE FROM article WHERE id = %d".formatted(id));
     }
 }
